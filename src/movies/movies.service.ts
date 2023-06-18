@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMovieDto } from './dto/create-movie.dto';
-import { UpdateMovieDto } from './dto/update-movie.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { MovieDocument, Movie } from './schema/movie.schema';
 import { Model } from 'mongoose';
@@ -12,8 +10,8 @@ export class MoviesService {
     private movieModel: Model<MovieDocument>,
   ) {}
 
-  create(createMovieDto: CreateMovieDto) {
-    const newMovie = new this.movieModel(createMovieDto);
+  create(movie: Movie) {
+    const newMovie = new this.movieModel(movie);
     return newMovie.save();
   }
 
@@ -25,8 +23,8 @@ export class MoviesService {
     return this.movieModel.findById(id);
   }
 
-  update(id: string, updateMovieDto: UpdateMovieDto) {
-    return this.movieModel.updateOne({ _id: id }, updateMovieDto);
+  update(id: string, movie: Movie) {
+    return this.movieModel.updateOne({ _id: id }, movie);
   }
 
   remove(id: string) {

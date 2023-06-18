@@ -3,16 +3,16 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Movie {
-  @Prop()
+  @Prop({ required: true })
   title: string;
 
-  @Prop()
+  @Prop({ required: true })
   description: string;
 
   @Prop()
   img: string;
 
-  @Prop()
+  @Prop({ min: 0, max: 10 })
   rating: number;
 }
 
