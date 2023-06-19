@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { MovieDocument, Movie } from './schema/movie.schema';
 import { Model } from 'mongoose';
@@ -10,24 +10,44 @@ export class MoviesService {
     private movieModel: Model<MovieDocument>,
   ) {}
 
-  create(movie: Movie) {
-    const newMovie = new this.movieModel(movie);
-    return newMovie.save();
+  async create(movie: Movie) {
+    try {
+      const newMovie = new this.movieModel(movie);
+      return await newMovie.save();
+    } catch (e) {
+      throw new InternalServerErrorException('Something went wrong');
+    }
   }
 
-  findAll(): Promise<MovieDocument[]> {
-    return this.movieModel.find().exec();
+  async findAll() {
+    try {
+      return await this.movieModel.find().exec();
+    } catch (e) {
+      throw new InternalServerErrorException('Something went wrong');
+    }
   }
 
-  findOne(id: string) {
-    return this.movieModel.findById(id);
+  async findOne(id: string) {
+    try {
+      return await this.movieModel.findById(id);
+    } catch (e) {
+      throw new InternalServerErrorException('Something went wrong');
+    }
   }
 
-  update(id: string, movie: Movie) {
-    return this.movieModel.updateOne({ _id: id }, movie);
+  async update(id: string, movie: Movie) {
+    try {
+      return await this.movieModel.updateOne({ _id: id }, movie);
+    } catch (e) {
+      throw new InternalServerErrorException('Something went wrong');
+    }
   }
 
-  remove(id: string) {
-    return this.movieModel.deleteOne({ _id: id });
+  async remove(id: string) {
+    try {
+      return await this.movieModel.deleteOne({ _id: id });
+    } catch (e) {
+      throw new InternalServerErrorException('Something went wrong');
+    }
   }
 }

@@ -4,12 +4,12 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 @Injectable()
-export class MoviePipe implements PipeTransform<any, Promise<MovieDocument>> {
+export class MoviePipe implements PipeTransform<any, Movie> {
   constructor(
     @InjectModel(Movie.name) private readonly movieModel: Model<MovieDocument>,
   ) {}
 
-  async transform(value: any): Promise<MovieDocument> {
+  transform(value: any): Movie {
     const movie = new this.movieModel(value);
 
     const validationError = movie.validateSync();
@@ -17,6 +17,6 @@ export class MoviePipe implements PipeTransform<any, Promise<MovieDocument>> {
       throw new BadRequestException(validationError.message);
     }
 
-    return movie;
+    return value;
   }
 }
