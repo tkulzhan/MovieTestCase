@@ -20,12 +20,12 @@ export class UserService {
 
   async login(loginDTO: LoginUserDto) {
     const secret = process.env.SECRET || 'secondary_secret';
-    var candidate: User;
+    var user: User;
     try {
       if (loginDTO.email) {
-        candidate = await this.userModel.findOne({ email: loginDTO.email });
+        user = await this.userModel.findOne({ email: loginDTO.email });
       } else if (loginDTO.username) {
-        candidate = await this.userModel.findOne({
+        user = await this.userModel.findOne({
           username: loginDTO.username,
         });
       } else {
@@ -33,14 +33,14 @@ export class UserService {
           'Either email or username must be provided',
         );
       }
-      if (!candidate) {
+      if (!user) {
         throw new BadRequestException('Email or username is wrong');
       }
-      const isMatch = await compare(loginDTO.password, candidate.password);
+      const isMatch = await compare(loginDTO.password, user.password);
       if (isMatch) {
         const payload = {
-          username: candidate.username,
-          email: candidate.email,
+          username: user.username,
+          email: user.email,
         };
         const token = jwt.sign(payload, secret, {
           expiresIn: '3h',
