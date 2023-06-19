@@ -8,8 +8,8 @@ import { User, UserDocument } from './schema/user.schema';
 import { Model } from 'mongoose';
 import { LoginUserDto } from './dto/loginUserDto';
 import { RegisterUserDto } from './dto/registerUserDto';
-import { ReturnUserDto } from './dto/returnUserDto';
 import { hash, compare } from 'bcrypt';
+import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class UserService {
@@ -19,6 +19,7 @@ export class UserService {
   ) {}
 
   async login(loginDTO: LoginUserDto) {
+    const secret = process.env.SECRET || 'secondary_secret';
     var candidate: User;
     try {
       if (loginDTO.email) {
@@ -37,11 +38,14 @@ export class UserService {
       }
       const isMatch = await compare(loginDTO.password, candidate.password);
       if (isMatch) {
-        const user: ReturnUserDto = {
+        const payload = {
           username: candidate.username,
           email: candidate.email,
         };
-        return user;
+        const token = jwt.sign(payload, secret, {
+          expiresIn: '3h',
+        });
+        return token;
       } else {
         throw new BadRequestException('Mismatched password');
       }
@@ -49,7 +53,7 @@ export class UserService {
       if (e instanceof BadRequestException) {
         throw e;
       } else {
-        throw new InternalServerErrorException('Something went wrong');
+        throw new InternalServerErrorException(e.message);
       }
     }
   }
@@ -62,7 +66,12 @@ export class UserService {
         email: registerDTO.email,
         password: hashedPwd,
       });
-      return await user.save();
+      await user.save();
+      const redirect = {
+        url: 'login',
+        statusCode: 201,
+      };
+      return redirect;
     } catch (e) {
       if (e.code === 11000) {
         throw new BadRequestException('Email or username already exists.');
