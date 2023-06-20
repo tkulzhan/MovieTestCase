@@ -15,7 +15,7 @@ import {
   Movie,
   MovieQuery,
   MovieCreateSchema,
-  MovieUpdateSchema
+  MovieUpdateSchema,
 } from './entity/movie.entity';
 import { ObjectIdPipe } from 'src/pipes/ObjectIdPipe';
 import { JoiValidationPipe } from 'src/pipes/JoiValidationPipe';
@@ -26,6 +26,7 @@ export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
   @Post()
+  @UseGuards(AuthGuard)
   @UsePipes(new JoiValidationPipe(MovieCreateSchema))
   create(@Body() movie: Movie) {
     return this.moviesService.create(movie);
