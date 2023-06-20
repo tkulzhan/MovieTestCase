@@ -1,4 +1,4 @@
-import { TokenPayload, TokenDocument, Token } from './schema/token.schema';
+import { TokenPayload, TokenDocument, Token } from './entity/token.entity';
 import * as jwt from 'jsonwebtoken';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';

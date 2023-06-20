@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { MovieDocument, Movie, MovieQuery } from './schema/movie.schema';
+import { MovieDocument, Movie, MovieQuery } from './entity/movie.entity';
 import { Model } from 'mongoose';
 
 @Injectable()

@@ -9,9 +9,10 @@ import {
 import { UserService } from './user.service';
 import { LoginUserDto } from './dto/loginUserDto';
 import { RegisterUserDto } from './dto/registerUserDto';
-import { UserPipe } from 'src/pipes/UserPipe';
+import { JoiValidationPipe } from 'src/pipes/JoiValidationPipe';
 import { Response } from 'express';
 import { TokenService } from '../token/token.service';
+import { UserRegisterSchema } from './entity/user.entity';
 
 @Controller('user')
 export class UserController {
@@ -30,7 +31,7 @@ export class UserController {
 
   @Post('register')
   @Redirect()
-  @UsePipes(UserPipe)
+  @UsePipes(new JoiValidationPipe(UserRegisterSchema))
   register(@Body() registerDTO: RegisterUserDto) {
     return this.userService.register(registerDTO);
   }

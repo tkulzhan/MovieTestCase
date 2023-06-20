@@ -1,6 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
-import { User } from '../../user/schema/user.schema';
+import { User } from '../../user/entity/user.entity';
 
 @Schema()
 export class Token {
