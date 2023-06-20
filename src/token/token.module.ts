@@ -2,9 +2,11 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Token, TokenSchema } from './schema/token.schema';
 import { TokenService } from './token.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     MongooseModule.forFeature([{ name: Token.name, schema: TokenSchema }]),
   ],
   providers: [

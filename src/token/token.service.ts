@@ -23,6 +23,8 @@ export class TokenService {
         value: tokenValue,
         user: payload._id,
       });
+      console.log(this.secret);
+      
       await this.saveToken(token);
       return tokenValue;
     } catch (e) {
