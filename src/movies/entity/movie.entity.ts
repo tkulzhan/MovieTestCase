@@ -13,7 +13,7 @@ export class Movie {
   @Prop()
   img: string;
 
-  @Prop({ min: 0, max: 10 })
+  @Prop({ min: 1, max: 10 })
   rating: number;
 }
 
@@ -28,7 +28,7 @@ export const MovieUpdateSchema = Joi.object({
   title: Joi.string(),
   description: Joi.string(),
   img: Joi.string().regex(/^https:\/\/.*\.(jpg|jpeg|png|gif|svg)$/i),
-  rating: Joi.number().min(0).max(10),
+  rating: Joi.number().min(1).max(10),
 });
 
 export type MovieQuery = {
