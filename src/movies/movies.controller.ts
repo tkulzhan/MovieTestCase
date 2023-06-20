@@ -8,9 +8,10 @@ import {
   Delete,
   UsePipes,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
-import { Movie } from './schema/movie.schema';
+import { Movie, MovieQuery } from './schema/movie.schema';
 import { ObjectIdPipe } from 'src/pipes/ObjectIdPipe';
 import { MoviePipe } from 'src/pipes/MoviePipe';
 import { AuthGuard } from 'src/guards/AuthGuard';
@@ -26,8 +27,8 @@ export class MoviesController {
   }
 
   @Get()
-  findAll() {
-    return this.moviesService.findAll();
+  findAll(@Query() query: MovieQuery) {
+    return this.moviesService.findAll(query);
   }
 
   @Get(':id')

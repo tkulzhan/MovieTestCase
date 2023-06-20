@@ -16,5 +16,9 @@ export class Movie {
   rating: number;
 }
 
+export type MovieQuery = {
+  title?: string;
+  sort?: 'asc' | 'desc' | 1 | -1;
+};
 export type MovieDocument = Document<Movie>;
 export const MovieSchema = SchemaFactory.createForClass(Movie);

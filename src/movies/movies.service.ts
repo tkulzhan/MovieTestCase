@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { MovieDocument, Movie } from './schema/movie.schema';
+import { MovieDocument, Movie, MovieQuery } from './schema/movie.schema';
 import { Model } from 'mongoose';
 
 @Injectable()
@@ -19,9 +19,19 @@ export class MoviesService {
     }
   }
 
-  async findAll() {
+  async findAll(query: MovieQuery) {
     try {
-      return await this.movieModel.find().exec();
+      const { sort, title } = query;
+      let findQuery = this.movieModel.find();
+      if (sort) {
+        findQuery = findQuery.sort({ rating: sort });
+      }
+      if (title) {
+        findQuery = findQuery.where({
+          title: { $regex: title, $options: 'i' },
+        });
+      }
+      return await findQuery.exec();
     } catch (e) {
       throw new InternalServerErrorException('Something went wrong');
     }
