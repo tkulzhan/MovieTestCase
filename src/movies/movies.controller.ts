@@ -7,11 +7,13 @@ import {
   Param,
   Delete,
   UsePipes,
+  UseGuards,
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { Movie } from './schema/movie.schema';
 import { ObjectIdPipe } from 'src/pipes/ObjectIdPipe';
 import { MoviePipe } from 'src/pipes/MoviePipe';
+import { AuthGuard } from 'src/guards/AuthGuard';
 
 @Controller('movies')
 export class MoviesController {
@@ -35,12 +37,13 @@ export class MoviesController {
   }
 
   @Put(':id')
-  @UsePipes(ObjectIdPipe)
-  update(@Param('id') id: string, @Body() movie: Movie) {
+  @UseGuards(AuthGuard)
+  update(@Param('id', new ObjectIdPipe()) id: string, @Body() movie: Movie) {
     return this.moviesService.update(id, movie);
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard)
   @UsePipes(ObjectIdPipe)
   remove(@Param('id') id: string) {
     return this.moviesService.remove(id);

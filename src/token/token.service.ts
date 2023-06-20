@@ -18,7 +18,7 @@ export class TokenService {
 
   async generateToken(payload: TokenPayload) {
     try {
-      const tokenValue = jwt.sign(payload, this.secret, { expiresIn: '3h' });
+      const tokenValue = jwt.sign(payload, this.secret, { expiresIn: '2h' });
       const token = new this.tokenModel({
         value: tokenValue,
         user: payload._id,
