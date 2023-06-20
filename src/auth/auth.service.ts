@@ -11,7 +11,7 @@ import { RegisterUserDto } from './dto/registerUserDto';
 import { hash, compare } from 'bcrypt';
 
 @Injectable()
-export class UserService {
+export class AuthService {
   constructor(
     @InjectModel(User.name)
     private userModel: Model<UserDocument>,
@@ -32,7 +32,7 @@ export class UserService {
         );
       }
       if (!user) {
-        throw new BadRequestException('Email or username is wrong');
+        throw new BadRequestException('Email or username is incorrect');
       }
       const isMatch = await compare(loginDTO.password, user.get('password'));
       if (isMatch) {
@@ -63,11 +63,10 @@ export class UserService {
         password: hashedPwd,
       });
       await user.save();
-      const redirect = {
-        url: 'login',
+      return {
         statusCode: 201,
+        message: 'Registration successful',
       };
-      return redirect;
     } catch (e) {
       if (e.code === 11000) {
         throw new BadRequestException('Email or username already exists.');
