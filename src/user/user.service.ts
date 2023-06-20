@@ -9,7 +9,6 @@ import { Model } from 'mongoose';
 import { LoginUserDto } from './dto/loginUserDto';
 import { RegisterUserDto } from './dto/registerUserDto';
 import { hash, compare } from 'bcrypt';
-import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class UserService {
@@ -19,8 +18,7 @@ export class UserService {
   ) {}
 
   async login(loginDTO: LoginUserDto) {
-    const secret = process.env.SECRET || 'secondary_secret';
-    var user: User;
+    var user: UserDocument;
     try {
       if (loginDTO.email) {
         user = await this.userModel.findOne({ email: loginDTO.email });
@@ -36,16 +34,14 @@ export class UserService {
       if (!user) {
         throw new BadRequestException('Email or username is wrong');
       }
-      const isMatch = await compare(loginDTO.password, user.password);
+      const isMatch = await compare(loginDTO.password, user.get('password'));
       if (isMatch) {
         const payload = {
-          username: user.username,
-          email: user.email,
+          _id: user._id.toString(),
+          username: user.get('username'),
+          email: user.get('email'),
         };
-        const token = jwt.sign(payload, secret, {
-          expiresIn: '3h',
-        });
-        return token;
+        return payload;
       } else {
         throw new BadRequestException('Mismatched password');
       }

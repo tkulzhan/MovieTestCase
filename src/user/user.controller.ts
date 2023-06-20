@@ -11,15 +11,20 @@ import { LoginUserDto } from './dto/loginUserDto';
 import { RegisterUserDto } from './dto/registerUserDto';
 import { UserPipe } from 'src/pipes/UserPipe';
 import { Response } from 'express';
+import { TokenService } from '../token/token.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly tokenService: TokenService,
+  ) {}
 
   @Post('login')
   @Redirect('movies', 201)
   async login(@Body() loginDTO: LoginUserDto, @Res() res: Response) {
-    const token = await this.userService.login(loginDTO);
+    const payload = await this.userService.login(loginDTO);
+    const token = await this.tokenService.generateToken(payload);
     return res.cookie('token', token, { maxAge: 3 * 3600 * 1000 });
   }
 
