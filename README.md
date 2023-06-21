@@ -18,8 +18,81 @@
 <h3>И после установки всех зависимостей прописать:</h3>
 <h3 style="background-color: black; padding: 10px 10px">npm start</h3>
 <br>
-<h1>Примечания</h1>
+<h1>Примечания к запуску</h1>
 <h3>Чтобы запустить проект у вас должен быть установлен NodeJS и MongoDB</h3>
 <h3>При разработке использовалась версия node 18.16.0</h3>
 <h3>Чтобы узнать свою версию node нужно прописать:</h3>
 <h3 style="background-color: black; padding: 10px 10px">node -v</h3>
+<br>
+<h1>Сущности</h1>
+<div style="background-color: black; padding: 10px 10px">
+<h3>
+<pre>
+user: {
+    _id: ObjectID,
+    username: String,
+    email: String,
+    password: String
+}
+</pre>
+<pre>
+movie: {
+    _id: ObjectID,
+    title: String,
+    description: String,
+    rating: Number
+}
+</pre>
+<pre>
+token: {
+    _id: ObjectID,
+    value: String,
+    user: ObjectID
+}
+</pre>
+</h3>
+</div>
+<br>
+<h1>Бонусные задания</h1>
+<h3>1. Сортировка по рейтингу осуществляется следующим добавлением параметра запроса <i>"sort"</i>, которое может имет значение: <i>"asc"</i>, <i>"desc"</i>, <i>1</i> или <i>-1</i>. Значения <i>"asc"</i> и <i>1</i> сортируют по возрастанию, <i>"desc"</i> и <i>-1</i> по убыванию.</h3>
+<h3>Также добавлена возможность фильтрации фильмов по полю title</h3>
+<div style="background-color: black; padding: 10px 10px">
+<h3>GET: http://localhost:3000/movies?title=te&sort=1</h3>
+<pre>
+[
+    {
+        "_id": "648e128e21eb3b44d00a47d6",
+        "title": "Interstellar",
+        "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+        "img": "https://example.com/interstellar.jpg",
+        "rating": 8.6
+    },
+    {
+        "_id": "6491e47b51e33d55b2a33775",
+        "title": "Testcase",
+        "description": "Testcase description, made for testing",
+        "img": "https://example.com/inception.jpg",
+        "rating": 8.7,
+        "__v": 0
+    }
+]
+</pre>
+</div>
+<h3>2. Авторизация происходит по следующим эндпоинтам:</h3>
+<ul>
+<li>/auth/login</li>
+<li>/auth/register</li>
+</ul>
+<h3>Для регистрации в теле запроса необходимо предоставить:</h3>
+<ul>
+<li>username: string</li>
+<li>email: string</li>
+<li>password: string</li>
+</ul>
+<h3>Для логина в теле запроса необходимо предоставить:</h3>
+<ul>
+<li>username: string <b>или</b> email: string</li>
+<li>password: string</li>
+</ul>
+<h3>При логине создается jwt токен, хранящий свое значение и его владельца, токен дейсвителен 2 часа, после этого пользователю нужно заново залогиниться, если хочет иметь возможность добавления/изменения/удаления фильмов, поскольку при попытке выполнения данных операций проверяется наличие валидного токена в cookies.</h3>
+<h3>3. Фильмы имеют поле <i>"img"</i>, которое содержит ссылку на фотографию. Данные ссылки могут быть использованы для отображения фотографий.</h3>
