@@ -6,6 +6,7 @@ import {
   Injectable,
   Inject,
   InternalServerErrorException,
+  BadRequestException,
 } from '@nestjs/common';
 
 @Injectable()
@@ -42,6 +43,22 @@ export class TokenService {
       }
       await token.save();
     } catch (e) {
+      throw new InternalServerErrorException('Something went wrong');
+    }
+  }
+
+  async deleteToken(tokenValue: string) {
+    try {
+      const token = await this.tokenModel.findOne({ value: tokenValue });
+      if (token) {
+        await this.tokenModel.deleteOne({ _id: token._id });
+      } else {
+        throw new BadRequestException('You are not logged in');
+      }
+    } catch (e) {
+      if (e instanceof BadRequestException) {
+        throw new BadRequestException(e.message);
+      }
       throw new InternalServerErrorException('Something went wrong');
     }
   }

@@ -80,8 +80,8 @@ token: {
 </div>
 <h3>2. Авторизация происходит по следующим эндпоинтам:</h3>
 <ul>
-<li>/auth/login</li>
-<li>/auth/register</li>
+<li>POST: /auth/login</li>
+<li>POST: /auth/register</li>
 </ul>
 <h3>Для регистрации в теле запроса необходимо предоставить:</h3>
 <ul>
