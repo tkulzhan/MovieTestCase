@@ -1,0 +1,128 @@
+[
+  {
+    "title": "The Shawshank Redemption",
+    "description":
+      "Two imprisoned men bond over several years, finding solace and eventual redemption through acts of common decency.",
+    "img": "https://wallpapercave.com/wp/wp2014263.jpg",
+    "rating": 9.3
+  },
+  {
+    "title": "The Godfather",
+    "description":
+      "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "img": "https://images4.alphacoders.com/284/thumb-1920-284136.jpg",
+    "rating": 9.2
+  },
+  {
+    "title": "The Dark Knight",
+    "description":
+      "When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
+    "img": "https://images.hdqwalls.com/download/the-dark-knight-aftermath-4k-yk-1920x1080.jpg",
+    "rating": 9.0
+  },
+  {
+    "title": "Pulp Fiction",
+    "description":
+      "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "img": "https://wallpapercave.com/wp/wp1830308.jpg",
+    "rating": 8.9
+  },
+  {
+    "title": "Fight Club",
+    "description":
+      "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
+    "img": "https://www.zastavki.com/pictures/1920x1080/2014/Movies__Fight_Club_055134_23.jpg",
+    "rating": 8.8
+  },
+  {
+    "title": "Forrest Gump",
+    "description":
+      "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal, and other historical events unfold through the perspective of an Alabama man with an IQ of 75.",
+    "img": "https://www.themoviedb.org/t/p/original/qdIMHd4sEfJSckfVJfKQvisL02a.jpg",
+    "rating": 8.8
+  },
+  {
+    "title": "Inception",
+    "description":
+      "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "img": "https://cdn.wallpapersafari.com/15/5/9uikoG.jpg",
+    "rating": 8.7
+  },
+  {
+    "title": "The Matrix",
+    "description":
+      "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "img": "https://images2.alphacoders.com/778/thumb-1920-77840.jpg",
+    "rating": 8.7
+  },
+  {
+    "title": "Goodfellas",
+    "description":
+      "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito.",
+    "img": "https://m.media-amazon.com/images/M/MV5BYjllYzEzZDUtMmUxMi00MjEwLWFiYTQtNTg5OWY1MTlhYjI0XkEyXkFqcGdeQW1pYnJ5YW50._V1_.jpg",
+    "rating": 8.7
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "description":
+      "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+    "img": "https://images5.alphacoders.com/531/thumb-1920-531080.jpg",
+    "rating": 8.8
+  },
+  {
+    "title": "The Good, the Bad and the Ugly",
+    "description":
+      "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
+    "img": "https://www.davidbcalhoun.com/wp-content/uploads/2016/schindlers-list-15-schindler-breaking-down-crying.jpg",
+    "rating": 8.8
+  },
+  {
+    "title": "The Departed",
+    "description":
+      "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyxTNCUAy0gaBAdwLxdSs5HFS_yaxyWn69qw&usqp=CAU",
+    "rating": 8.5
+  },
+  {
+    "title": "The Prestige",
+    "description":
+      "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+    "img": "https://wallpapercave.com/dwp1x/wp4138504.jpg",
+    "rating": 8.5
+  },
+  {
+    "title": "Gladiator",
+    "description":
+      "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "img": "https://wallpapercave.com/wp/sQZgJpJ.jpg",
+    "rating": 8.5
+  },
+  {
+    "title": "The Lion King",
+    "description":
+      "A young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.",
+    "img": "https://cdn.wallpapersafari.com/17/45/40Ftaz.jpg",
+    "rating": 8.5
+  },
+  {
+    "title": "The Avengers",
+    "description":
+      "Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.",
+    "img": "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701190840.jpg",
+    "rating": 8.0
+  },
+  {
+    "title": "The Wolf of Wall Street",
+    "description":
+      "Based on the true story of Jordan Belfort, from his rise to a wealthy stockbroker living the high life to his fall involving crime, corruption, and the federal government.",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcnJoyESlknOR2m7eOCUPlVW4L-LKMieXRfA&usqp=CAU",
+    "rating": 8.2
+  },
+  {
+    "title": "Interstellar",
+    "description":
+      "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "img": "https://preview.redd.it/0v4m6cz6yca21.jpg?auto=webp&s=a2cfd9885771ce3d02456b748bbafe6b723fad17",
+    "rating": 8.6
+  }
+]
