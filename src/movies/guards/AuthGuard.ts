@@ -2,7 +2,6 @@ import {
   Injectable,
   CanActivate,
   ExecutionContext,
-  InternalServerErrorException,
 } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 

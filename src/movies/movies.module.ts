@@ -3,7 +3,7 @@ import { MoviesService } from './movies.service';
 import { MoviesController } from './movies.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MovieSchema, Movie } from './entity/movie.entity';
-import { AuthGuard } from '../guards/AuthGuard';
+import { AuthGuard } from './guards/AuthGuard';
 
 @Module({
   imports: [

@@ -19,7 +19,7 @@ import {
 } from './entity/movie.entity';
 import { ObjectIdPipe } from '../pipes/ObjectIdPipe';
 import { JoiValidationPipe } from '../pipes/JoiValidationPipe';
-import { AuthGuard } from '../guards/AuthGuard';
+import { AuthGuard } from './guards/AuthGuard';
 
 @Controller('movies')
 export class MoviesController {
