@@ -17,9 +17,9 @@ import {
   MovieCreateSchema,
   MovieUpdateSchema,
 } from './entity/movie.entity';
-import { ObjectIdPipe } from 'src/pipes/ObjectIdPipe';
-import { JoiValidationPipe } from 'src/pipes/JoiValidationPipe';
-import { AuthGuard } from 'src/guards/AuthGuard';
+import { ObjectIdPipe } from '../pipes/ObjectIdPipe';
+import { JoiValidationPipe } from '../pipes/JoiValidationPipe';
+import { AuthGuard } from '../guards/AuthGuard';
 
 @Controller('movies')
 export class MoviesController {

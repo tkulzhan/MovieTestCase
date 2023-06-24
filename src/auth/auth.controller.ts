@@ -2,7 +2,7 @@ import { Controller, Post, Body, UsePipes, Res, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/loginUserDto';
 import { RegisterUserDto } from './dto/registerUserDto';
-import { JoiValidationPipe } from 'src/pipes/JoiValidationPipe';
+import { JoiValidationPipe } from '../pipes/JoiValidationPipe';
 import { Response, Request } from 'express';
 import { TokenService } from '../token/token.service';
 import { UserRegisterSchema } from './entity/user.entity';
